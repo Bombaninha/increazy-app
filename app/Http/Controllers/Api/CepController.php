@@ -1,5 +1,5 @@
 <?php
-/*
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -12,4 +12,3 @@ class CepController extends Controller
         dd($ceps);
     }
 }
-/*
