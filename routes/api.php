@@ -20,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-//Route::get('{ceps}', [CepController::class, 'index']);
+Route::get('{ceps}', [CepController::class, 'index']);
