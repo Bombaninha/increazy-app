@@ -30,6 +30,6 @@ class CreateViaCEPCommand extends Command
     {
         $cepService = new ViacepService();
 
-        $this->info(json_encode($cepService->getLocation($this->argument('ceps'))));
+        $this->info(json_encode($cepService->getMultipleLocation($this->argument('ceps'))));
     }
 }

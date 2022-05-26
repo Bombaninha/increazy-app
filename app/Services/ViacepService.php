@@ -8,9 +8,9 @@ use Illuminate\Support\Str;
 
 class ViacepService {
 
-    // Valida um cep, retirando tudo que não é digito e verificando se o tamanho continua sendo 8
+    // Valida um cep por meio do formato
     public function validateCepFormat(string $cep) : bool {
-        return Str::length(preg_replace('/\D/', '', $cep)) == 8;
+        return preg_match('/^[0-9]{5,5}([- ]?[0-9]{3,3})?$/', $cep);
     }
 
     // Consulta um cep
