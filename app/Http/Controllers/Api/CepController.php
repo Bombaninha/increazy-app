@@ -5,24 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Http;
+use App\Http\Traits\CepTrait;
 
 class CepController extends Controller
 {
-
-    private function fetch(string $ceps)
-    {
-        $cepsCollection = collect(explode(',', $ceps));
-
-        $responseCollection = collect();
-
-        $cepsCollection->each(function ($item, $key) use ($responseCollection) {
-            $response = Http::get("viacep.com.br/ws/$item/json/");
-            $responseCollection->add(json_decode($response->body()));
-        });
-
-        return $responseCollection;
-    }
+    use CepTrait;
 
     /*
         Quando consultado um CEP de formato inválido, por exemplo: "950100100" (9 dígitos), "95010A10" (alfanumérico), "95010 10" (espaço), o código de retorno da consulta será um 400 (Bad Request). Antes de acessar o webservice, valide o formato do CEP e certifique-se que o mesmo possua {8} dígitos. Exemplo de como validar o formato do CEP em javascript está disponível nos exemplos abaixo.
@@ -30,8 +17,8 @@ class CepController extends Controller
     */
     public function index(string $ceps)
     {   
-        $cepsCollection = $this->fetch($ceps);
-        
-        return response()->json($cepsCollection);
+        $responseCollection = $this->fetchData($ceps);
+
+        return response()->json($responseCollection);
     }
 }
