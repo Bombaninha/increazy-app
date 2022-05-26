@@ -3,7 +3,7 @@
 ## Breve descrição
 A API foi construída através da utilização de um service (ViacepService). 
 Nele construiu-se uma função para validação de CEP, para evitar Bad Requests, conforme descrito na API oficial. E duas outras funções que servem para buscar por um único CEP e outra para múltiplos.
-Ademais, como o recurso é útil para a aplicação, em geral, construiu-se um command artisan que pode ser utilizado da seguinte maneira.
+Ademais, como o recurso é útil para a aplicação, em geral, construiu-se um comando artisan que pode ser utilizado da seguinte maneira.
 
 ```
 php artisan viacep:search ceps
