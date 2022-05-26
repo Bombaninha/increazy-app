@@ -12,6 +12,6 @@ class CepController extends Controller
     {   
         $cepService = new ViacepService();
 
-        return response()->json($cepService->getLocation($ceps));
+        return response()->json($cepService->getMultipleLocation($ceps));
     }
 }
