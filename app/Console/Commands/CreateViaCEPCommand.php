@@ -3,13 +3,10 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-
-use App\Http\Traits\CepTrait;
+use App\Services\ViacepService;
 
 class CreateViaCEPCommand extends Command
 {
-    use CepTrait;
-
     /**
      * The name and signature of the console command.
      *
@@ -31,8 +28,8 @@ class CreateViaCEPCommand extends Command
      */
     public function handle()
     {
-        $responseCollection = $this->fetchData($this->argument('ceps'));
-    
-        $this->info($responseCollection);
+        $cepService = new ViacepService();
+
+        $this->info(json_encode($cepService->getLocation($this->argument('ceps'))));
     }
 }
